@@ -8,7 +8,7 @@ me trying to explain everything
 need python3 and i guess ffmpeg (the pip3 library)
 
 ## Sample videos
-download some sample videos (they all need the same codec if you don't want any datamosh), you can download some from tiktok by right clicking and downloading it and use a converter like [this one that i rely on](http://yt2mp3.gs), put them in the video folder
+download some sample videos (they all need the same codec if you don't want any datamosh), you can download some from tiktok by using [ssstik](http://ssstik.io), and use [yt2mp3](http://yt2mp3.gs) for youtube videos, put them in the video folder
 
 ## What to run first
 split.py splits the videos from the video folder into between 0.5 to 3 second snippets and puts the snippets in the source samples folder, then script.py uses the snippets and splices them into approx 10 to 30 second videos
