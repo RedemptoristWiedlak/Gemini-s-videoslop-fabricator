@@ -67,16 +67,16 @@ def split_video(file_name):
         current_time += clip_len
         clip_idx += 1
 
-    print(f"processed {file_name} -> {saved_count} valid chunks saved.")
+    print(f"{file_name} was divided into {saved_count} chunks")
 
 def main():
     if not os.path.exists(VIDEO_DIR):
-        print(f"directory '{VIDEO_DIR}' does not exist.")
+        print(f"uhhh you forgot the {VIDEO_DIR}")
         return
 
     videos = [f for f in os.listdir(VIDEO_DIR) if f.lower().endswith(VALID_EXTS)]
     if not videos:
-        print("no videos found in 'video/' folder.")
+        print("maybe you need to find and save some videos first")
         return
 
     for v in videos:
