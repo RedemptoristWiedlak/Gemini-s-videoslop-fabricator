@@ -14,7 +14,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 def stitch_samples():
     samples = [f for f in os.listdir(SOURCE_DIR) if f.lower().endswith(VALID_EXTS)]
     if not samples:
-        print("no sample clips found in 'source samples/'!")
+        print("maybe you need to run split.py first")
         return
 
     sample_count = random.randint(5, 20)
@@ -56,9 +56,9 @@ def stitch_samples():
 
     # verify the output file exists AND is greater than 0 bytes
     if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
-        print(f"fabricated 9:16 slop with {len(selected)} clips: {out_path}")
+        print(f"fabricated some slop with {len(selected)} clips: {out_path}")
     else:
-        print(f"failed to generate video! ffmpeg error:\n{res.stderr[-400:] if res.stderr else 'unknown error'}")
+        print(f"i may have messed up since ffmpeg error:\n{res.stderr[-400:] if res.stderr else 'unknown error'}")
 
 if __name__ == "__main__":
     stitch_samples()
