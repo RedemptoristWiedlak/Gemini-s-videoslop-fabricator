@@ -35,7 +35,7 @@ def split_video(file_name):
     base_name = os.path.splitext(file_name)[0]
 
     while current_time < total_duration:
-        clip_len = round(random.uniform(0.05, 3.0), 2)
+        clip_len = round(random.uniform(0.05, 1.0), 2)
         if current_time + clip_len > total_duration:
             clip_len = total_duration - current_time
 
