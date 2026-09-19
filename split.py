@@ -2,8 +2,6 @@ import os
 import random
 import subprocess
 
-#gemini also did this part
-
 VIDEO_DIR = "video"
 OUTPUT_DIR = "source samples"
 VALID_EXTS = (".mp4", ".mkv", ".avi", ".mov", ".webm")
@@ -35,22 +33,24 @@ def split_video(file_name):
     base_name = os.path.splitext(file_name)[0]
 
     while current_time < total_duration:
-        clip_len = round(random.uniform(0.05, 1.0), 2)
+        # Generate duration between 0.025 and 1.0 seconds
+        clip_len = round(random.uniform(0.025, 1.0), 3)
+        
         if current_time + clip_len > total_duration:
             clip_len = total_duration - current_time
 
-        if clip_len < 0.2:
+        # Stop if the remaining time is less than your minimum threshold
+        if clip_len < 0.025:
             break
 
         out_name = f"{base_name}_chunk_{clip_idx:04d}.mp4"
         out_path = os.path.join(OUTPUT_DIR, out_name)
 
-        # switched -c:v to mpeg4 (native ffmpeg codec) so missing libx264 won't break execution
         cmd = [
             "ffmpeg", "-y",
-            "-ss", str(current_time),
+            "-ss", f"{current_time:.3f}",
             "-i", input_path,
-            "-t", str(clip_len),
+            "-t", f"{clip_len:.3f}",
             "-c:v", "mpeg4",
             "-q:v", "2",
             "-c:a", "aac",
