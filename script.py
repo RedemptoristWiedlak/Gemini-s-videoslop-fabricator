@@ -17,7 +17,7 @@ def stitch_samples():
         print("maybe you need to run split.py first")
         return
 
-    sample_count = random.randint(10, 30)
+    sample_count = random.randint(10, 50)
     selected = random.choices(samples, k=min(sample_count, len(samples)))
     
     list_file = os.path.join(OUTPUT_DIR, "concat_list.txt")
